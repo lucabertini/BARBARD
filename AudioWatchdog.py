@@ -11,6 +11,10 @@ li trascrive tramite l'API di OpenAI e li organizza per la produzione.
 import os
 import sys
 from pathlib import Path
+from dotenv import load_dotenv
+PROJECT_ROOT = Path('.').resolve()
+os.chdir(PROJECT_ROOT)
+load_dotenv()
 
 # Trova il percorso assoluto della directory in cui si trova questo script.
 # Questo rende il progetto portabile e indipendente dalla directory di lavoro corrente.
@@ -65,9 +69,9 @@ FOLDER_TO_WATCH = PROJECT_ROOT / "FROM_TABLES"
 WORK_IN_PROGRESS_DIR = PROJECT_ROOT / "WORK_IN_PROGRESS"
 ARCHIVE_DIR = FOLDER_TO_WATCH / "Archive"
 TRANSCRIPTION_ERROR_DIR = ARCHIVE_DIR / "transcription_errors"
-CHECK_INTERVAL_SECONDS = 5
-
+CHECK_INTERVAL_SECONDS = int(os.getenv("CHECK_INTERVAL_SECONDS", "5"))
 MIN_CHARS_TRANSCRIPTION = int(os.getenv("CARATTERI_MINIMI", "0"))
+
 
 # --- CONFIGURAZIONE OPENAI ---
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
@@ -183,13 +187,24 @@ def main():
     ARCHIVE_DIR.mkdir(exist_ok=True)
     TRANSCRIPTION_ERROR_DIR.mkdir(parents=True, exist_ok=True)
 
+    # --- INIZIO BLOCCO MODIFICATO ---
+    # Creiamo una versione mascherata della chiave API per la stampa (per sicurezza)
+    api_key_display = f"{OPENAI_API_KEY[:5]}...{OPENAI_API_KEY[-4:]}" if OPENAI_API_KEY else f"{ERROR_COLOR}NON IMPOSTATA"
+
     print(f"{SUCCESS_COLOR}-----------------------------------------")
     print(f"{SUCCESS_COLOR} Audio Watchdog Avviato")
-    print(f"{INFO_COLOR}Controllo la cartella '{PATH_COLOR}{FOLDER_TO_WATCH}{INFO_COLOR}' ogni {CHECK_INTERVAL_SECONDS} secondi.")
-    if MIN_CHARS_TRANSCRIPTION > 0:
-        print(f"{INFO_COLOR}Trascrizioni con meno di {MIN_CHARS_TRANSCRIPTION} caratteri verranno ignorate.")
-    print(f"{TAVOLO_COLOR}Premi CTRL+C per terminare.")
     print(f"{SUCCESS_COLOR}-----------------------------------------")
+    print(f"{INFO_COLOR}Configurazione caricata:")
+    print(f"  - Cartella da sorvegliare: {PATH_COLOR}{FOLDER_TO_WATCH}")
+    
+    # Stampa dei valori letti dal file .env o dei valori di default
+    print(f"  - Intervallo di controllo (.env): {PATH_COLOR}{CHECK_INTERVAL_SECONDS} secondi")
+    print(f"  - Caratteri minimi (.env): {PATH_COLOR}{MIN_CHARS_TRANSCRIPTION if MIN_CHARS_TRANSCRIPTION > 0 else 'Nessun limite'}")
+    print(f"  - Chiave API OpenAI (.env): {SUCCESS_COLOR}Caricata ({api_key_display})")
+    
+    print(f"{SUCCESS_COLOR}-----------------------------------------")
+    print(f"{TAVOLO_COLOR}In attesa di file... (Premi CTRL+C per terminare)")
+    # --- FINE BLOCCO MODIFICATO ---
 
     try:
         while True:

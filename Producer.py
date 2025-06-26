@@ -13,6 +13,7 @@ spinner, CODA LIMITATA e DEBUG)
 import os
 import sys
 from pathlib import Path
+from dotenv import load_dotenv # <-- 1. PRIMA MODIFICA
 
 # Trova il percorso assoluto della directory in cui si trova questo script.
 # Questo rende il progetto portabile e indipendente dalla directory di lavoro corrente.
@@ -24,6 +25,7 @@ except NameError:
 
 # Imposta la directory di lavoro sulla radice del progetto per coerenza.
 os.chdir(PROJECT_ROOT)
+load_dotenv() # <-- 2. SECONDA MODIFICA
 # --- FINE BLOCCO UNIVERSALE ---
 
 import time
@@ -53,8 +55,11 @@ PRODUCER_STATE_FILE = TMP_DIR / "producer_state.json"
 # Il percorso dello script da lanciare deve essere assoluto per evitare errori
 SONG_GENERATOR_SCRIPT = PROJECT_ROOT / "GenerateSong.py"
 
-MAX_WORKERS = int(os.getenv("MAX_WORKERS", "2"))
-MAX_QUEUE_SIZE = int(os.getenv("MAX_QUEUE_SIZE", "2"))
+MAX_WORKERS= int(os.getenv("MAX_WORKERS", "2"))
+MAX_QUEUE_SIZE= int(os.getenv("MAX_QUEUE_SIZE", "2"))
+
+
+
 
 # --- FUNZIONI DI UTILITÀ ---
 def get_timestamp():
@@ -291,6 +296,14 @@ class ProducerManager:
 
 # --- PUNTO DI INGRESSO DELLO SCRIPT ---
 if __name__ == "__main__":
+    # --- INIZIO CAMBIAMENTO ---
+    # Stampa i parametri di configurazione letti dal file .env (o i valori di default)
+    print(f"{Fore.BLUE}{Style.BRIGHT}--- Parametri di Configurazione Caricati ---{Style.RESET_ALL}")
+    print(f"{Fore.BLUE}  - MAX_WORKERS    : {MAX_WORKERS}{Style.RESET_ALL}")
+    print(f"{Fore.BLUE}  - MAX_QUEUE_SIZE : {MAX_QUEUE_SIZE}{Style.RESET_ALL}")
+    print(f"{Fore.BLUE}{Style.BRIGHT}-------------------------------------------{Style.RESET_ALL}\n")
+    # --- FINE CAMBIAMENTO ---
+
     try:
         # Usa un file lock per garantire che solo un'istanza del producer sia in esecuzione
         with FileLock(PRODUCER_LOCK_FILE, timeout=0):
