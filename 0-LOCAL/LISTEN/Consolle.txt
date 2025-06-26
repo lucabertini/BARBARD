@@ -1140,3 +1140,138 @@ VIVO!: 19:31:59
 20:14:55 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
 20:14:55 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
 20:14:55 Ascolto avviato... (VAD Mode: 3)
+20:18:06 AVVIO SCRIPT 2025-06-26 20:18:06
+20:18:06 Sistema rilevato: Mac (Prefisso: 5). I file verranno spostati in:
+20:18:06 '/Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES'
+20:18:06 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:18:06 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:18:06 Ascolto avviato... (VAD Mode: 3)
+20:18:14 Voce rilevata! Inizio registrazione...
+VIVO!: 20:18:16
+VIVO!: 20:18:26
+VIVO!: 20:18:36
+20:18:44 Fine registrazione: max 30s raggiunti.
+20:18:45 File audio salvato: 5-20250626_201845.wav (Durata: 30.0s).
+20:18:45 Durata ok (30.0s). Avvio invio/spostamento...
+20:18:45 Avvio Spostamento (Mac) per il file: 5-20250626_201845.wav
+20:18:45 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_201845.wav
+20:18:46 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:18:46 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:18:46 Ascolto avviato... (VAD Mode: 3)
+VIVO!: 20:18:46
+20:18:51 Voce rilevata! Inizio registrazione...
+VIVO!: 20:18:56
+VIVO!: 20:19:06
+VIVO!: 20:19:16
+20:19:21 Fine registrazione: max 30s raggiunti.
+20:19:21 File audio salvato: 5-20250626_201921.wav (Durata: 30.0s).
+20:19:21 Durata ok (30.0s). Avvio invio/spostamento...
+20:19:21 Avvio Spostamento (Mac) per il file: 5-20250626_201921.wav
+20:19:21 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_201921.wav
+20:19:22 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:19:22 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:19:22 Ascolto avviato... (VAD Mode: 3)
+20:19:23 Voce rilevata! Inizio registrazione...
+VIVO!: 20:19:26
+VIVO!: 20:19:36
+VIVO!: 20:19:46
+20:19:53 Fine registrazione: max 30s raggiunti.
+20:19:53 File audio salvato: 5-20250626_201953.wav (Durata: 30.0s).
+20:19:53 Durata ok (30.0s). Avvio invio/spostamento...
+20:19:53 Avvio Spostamento (Mac) per il file: 5-20250626_201953.wav
+20:19:53 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_201953.wav
+20:19:54 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:19:54 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:19:54 Ascolto avviato... (VAD Mode: 3)
+20:19:54 Voce rilevata! Inizio registrazione...
+VIVO!: 20:19:56
+VIVO!: 20:20:06
+VIVO!: 20:20:16
+20:20:24 Fine registrazione: max 30s raggiunti.
+20:20:24 File audio salvato: 5-20250626_202024.wav (Durata: 30.0s).
+20:20:25 Durata ok (30.0s). Avvio invio/spostamento...
+20:20:25 Avvio Spostamento (Mac) per il file: 5-20250626_202024.wav
+20:20:25 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_202024.wav
+20:20:26 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:20:26 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:20:26 Ascolto avviato... (VAD Mode: 3)
+20:20:26 Voce rilevata! Inizio registrazione...
+VIVO!: 20:20:26
+VIVO!: 20:20:36
+VIVO!: 20:20:46
+20:20:56 Fine registrazione: max 30s raggiunti.
+20:20:56 File audio salvato: 5-20250626_202056.wav (Durata: 30.0s).
+20:20:56 Durata ok (30.0s). Avvio invio/spostamento...
+20:20:56 Avvio Spostamento (Mac) per il file: 5-20250626_202056.wav
+20:20:56 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_202056.wav
+20:20:57 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:20:57 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:20:57 Ascolto avviato... (VAD Mode: 3)
+VIVO!: 20:20:57
+20:20:58 Voce rilevata! Inizio registrazione...
+VIVO!: 20:21:07
+VIVO!: 20:21:17
+20:21:28 Fine registrazione: max 30s raggiunti.
+20:21:28 File audio salvato: 5-20250626_202128.wav (Durata: 30.0s).
+20:21:28 Durata ok (30.0s). Avvio invio/spostamento...
+20:21:28 Avvio Spostamento (Mac) per il file: 5-20250626_202128.wav
+20:21:28 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_202128.wav
+20:21:29 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:21:29 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:21:29 Ascolto avviato... (VAD Mode: 3)
+VIVO!: 20:21:29
+20:21:29 Voce rilevata! Inizio registrazione...
+VIVO!: 20:21:39
+VIVO!: 20:21:49
+20:21:59 Fine registrazione: max 30s raggiunti.
+20:21:59 File audio salvato: 5-20250626_202159.wav (Durata: 30.0s).
+20:21:59 Durata ok (30.0s). Avvio invio/spostamento...
+20:21:59 Avvio Spostamento (Mac) per il file: 5-20250626_202159.wav
+20:21:59 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_202159.wav
+20:22:00 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:22:00 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:22:00 Ascolto avviato... (VAD Mode: 3)
+VIVO!: 20:22:00
+20:22:00 Voce rilevata! Inizio registrazione...
+VIVO!: 20:22:10
+VIVO!: 20:22:20
+20:22:30 Fine registrazione: max 30s raggiunti.
+20:22:30 File audio salvato: 5-20250626_202230.wav (Durata: 30.0s).
+20:22:31 Durata ok (30.0s). Avvio invio/spostamento...
+20:22:31 Avvio Spostamento (Mac) per il file: 5-20250626_202230.wav
+20:22:31 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_202230.wav
+20:22:32 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:22:32 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:22:32 Ascolto avviato... (VAD Mode: 3)
+VIVO!: 20:22:32
+20:22:32 Voce rilevata! Inizio registrazione...
+VIVO!: 20:22:42
+VIVO!: 20:22:52
+20:35:24 AVVIO SCRIPT 2025-06-26 20:35:24
+20:35:24 Sistema rilevato: Mac (Prefisso: 5). I file verranno spostati in:
+20:35:24 '/Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES'
+20:35:24 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:35:24 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:35:24 Ascolto avviato... (VAD Mode: 3)
+20:35:24 Voce rilevata! Inizio registrazione...
+20:40:42 AVVIO SCRIPT 2025-06-26 20:40:42
+20:40:42 Sistema rilevato: Mac (Prefisso: 5). I file verranno spostati in:
+20:40:42 '/Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES'
+20:40:42 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:40:42 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:40:42 Configurazione audio dinamica: RATE=16000Hz, CHUNK=320 (per 20ms di frame)
+20:40:42 Ascolto avviato... (VAD Mode: 3)
+20:40:42 Voce rilevata! Inizio registrazione...
+VIVO!: 20:40:52
+VIVO!: 20:41:02
+VIVO!: 20:41:12
+20:41:12 Fine registrazione: max 30s raggiunti.
+20:41:12 File audio salvato: 5-20250626_204112.wav (Durata: 30.0s).
+20:41:13 Durata ok (30.0s). Avvio invio/spostamento...
+20:41:13 Avvio Spostamento (Mac) per il file: 5-20250626_204112.wav
+20:41:13 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_204112.wav
+20:41:14 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+20:41:14 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+20:41:14 Configurazione audio dinamica: RATE=16000Hz, CHUNK=320 (per 20ms di frame)
+20:41:14 Ascolto avviato... (VAD Mode: 3)
+20:41:14 Voce rilevata! Inizio registrazione...

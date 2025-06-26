@@ -13,7 +13,9 @@ import subprocess
 import datetime
 from dotenv import load_dotenv
 import shutil
+import contextlib
 
+# ... (tutte le sezioni iniziali rimangono identiche) ...
 # ---------------------------------------------------
 # FUNZIONE DI RILEVAMENTO SISTEMA
 # ---------------------------------------------------
@@ -45,14 +47,10 @@ else:
     print(f"ATTENZIONE: File .env non trovato in {CURRENT_DIR}. Si useranno i valori di default.")
 
 # ---------------------------------------------------
-# SEZIONE HELPER PER DEVICE INPUT PYAudio
+# SEZIONE HELPER
 # ---------------------------------------------------
 def find_input_device(p_audio, min_input_channels=1, name_keyword=None):
-    """
-    Cerca tra i device PyAudio quello con almeno `min_input_channels`.
-    Se `name_keyword` è fornito, preferisce i device che contengono quella stringa nel nome.
-    Ritorna l'indice del primo matching, altrimenti None.
-    """
+    """Cerca e ritorna l'indice del device di input."""
     candidates = []
     for idx in range(p_audio.get_device_count()):
         info = p_audio.get_device_info_by_index(idx)
@@ -66,26 +64,43 @@ def find_input_device(p_audio, min_input_channels=1, name_keyword=None):
                 return idx
     return candidates[0][0]
 
+def find_supported_rate(p_audio, device_index, channels, rates_to_try=[16000, 48000, 32000, 8000, 44100]):
+    """
+    Testa una lista di frequenze di campionamento e ritorna la prima supportata dal device.
+    Priorità alle frequenze compatibili con WebRTC VAD.
+    """
+    for rate in rates_to_try:
+        try:
+            if p_audio.is_format_supported(rate,
+                                           input_device=device_index,
+                                           input_channels=channels,
+                                           input_format=pyaudio.paInt16):
+                return rate
+        except ValueError:
+            continue
+    return None
+
 # ---------------------------------------------------
 # CARICAMENTO VARIABILI E RILEVAMENTO SISTEMA
 # ---------------------------------------------------
 DETECTED_SYSTEM = detect_system()
 IS_RASPBERRY = (DETECTED_SYSTEM == 'raspberry')
 IS_MAC = (DETECTED_SYSTEM == 'mac')
+IS_LINUX = (DETECTED_SYSTEM in ['raspberry', 'linux_pc'])
 
 MAC_DEFAULT_DEST_DIR = "/Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES"
 MAC_DESTINATION_DIR = None
 
 if IS_RASPBERRY:
     PROJECT_DIRECTORY = os.getenv("IF_RASPIE_PROJECT_DIRECTORY", CURRENT_DIR)
-    POSTAZIONE_PREFIX = os.getenv("POSTAZIONE_PREFIX", "0") # <-- Caricamento per RPi
+    POSTAZIONE_PREFIX = os.getenv("POSTAZIONE_PREFIX", "0")
 elif IS_MAC:
     PROJECT_DIRECTORY = os.getenv("IF_MAC_PROJECT_DIRECTORY", CURRENT_DIR)
-    POSTAZIONE_PREFIX = os.getenv("POSTAZIONE_PREFIX", "99") # <-- Caricamento per Mac
+    POSTAZIONE_PREFIX = os.getenv("POSTAZIONE_PREFIX", "99")
     MAC_DESTINATION_DIR = os.getenv("MAC_DESTINATION_DIR", MAC_DEFAULT_DEST_DIR)
 else:
     PROJECT_DIRECTORY = CURRENT_DIR
-    POSTAZIONE_PREFIX = "0" # <-- Default per altri sistemi
+    POSTAZIONE_PREFIX = "0"
 
 LOG_FILE_BASE = os.getenv("LOG_FILE", "Consolle.txt")
 SCRIPT_PATH_BASE = os.getenv("SCRIPT_PATH", "sposta_file.sh")
@@ -93,16 +108,17 @@ SCRIPT_EXECUTOR = os.getenv("SCRIPT_EXECUTOR", "/bin/bash")
 
 try:
     VAD_MODE = int(os.getenv("VAD_MODE", 3))
-    SILENCE_THRESHOLD_SECONDS = float(os.getenv("SILENCE_THRESHOLD_SECONDS", 15.0))
+    SILENCE_THRESHOLD_SECONDS = float(os.getenv("SILENCE_THRESHOLD_SECONDS", 10.0))
     MAX_RECORD_SECONDS = int(os.getenv("MAX_RECORD_SECONDS", 30))
     ENERGY_THRESHOLD = int(os.getenv("ENERGY_THRESHOLD", 400))
     DURATA_MINIMA = float(os.getenv("DURATA_MINIMA", 10.0))
-    CHUNK = int(os.getenv("CHUNK", 320))
+    # CHUNK non è più una costante fissa, ma un valore di default.
+    DEFAULT_CHUNK = int(os.getenv("CHUNK", 320))
     CHANNELS = int(os.getenv("CHANNELS", 1))
-    RATE = int(os.getenv("RATE", 16000))
+    DEFAULT_RATE = int(os.getenv("RATE", 16000))
 except (ValueError, TypeError) as e:
     print(f"ERRORE: Valore non valido nel .env per un parametro numerico: {e}. Uso i default.")
-    VAD_MODE, SILENCE_THRESHOLD_SECONDS, MAX_RECORD_SECONDS, ENERGY_THRESHOLD, DURATA_MINIMA, CHUNK, CHANNELS, RATE = 3, 15.0, 30, 400, 10.0, 320, 1, 16000
+    VAD_MODE, SILENCE_THRESHOLD_SECONDS, MAX_RECORD_SECONDS, ENERGY_THRESHOLD, DURATA_MINIMA, DEFAULT_CHUNK, CHANNELS, DEFAULT_RATE = 3, 10.0, 30, 400, 10.0, 320, 1, 16000
 
 try:
     os.makedirs(PROJECT_DIRECTORY, exist_ok=True)
@@ -114,8 +130,6 @@ except OSError as e:
 LOG_FILE = os.path.join(PROJECT_DIRECTORY, LOG_FILE_BASE)
 SCRIPT_PATH = os.path.join(PROJECT_DIRECTORY, SCRIPT_PATH_BASE)
 
-# NOTA: WAVE_OUTPUT_FILENAME non viene più definito qui perché sarà dinamico.
-
 log_file_handle = None
 try:
     log_file_handle = open(LOG_FILE, "a", encoding="utf-8")
@@ -123,6 +137,25 @@ except Exception as e:
     print(f"ERRORE CRITICO: Impossibile aprire il file di log '{LOG_FILE}': {e}. Logging su file disabilitato.")
 
 GRAY, GREEN, RED, BLUE, RESET = '\033[90m', '\033[92m', '\033[91m', '\033[94m', '\033[0m'
+
+@contextlib.contextmanager
+def silence_alsa_errors():
+    if not IS_LINUX:
+        yield
+        return
+    devnull = None
+    old_stderr_fd = -1
+    try:
+        old_stderr_fd = os.dup(sys.stderr.fileno())
+        devnull = os.open(os.devnull, os.O_WRONLY)
+        os.dup2(devnull, sys.stderr.fileno())
+        yield
+    finally:
+        if old_stderr_fd != -1:
+            os.dup2(old_stderr_fd, sys.stderr.fileno())
+            os.close(old_stderr_fd)
+        if devnull is not None:
+            os.close(devnull)
 
 def print_colored(message, color=GRAY, is_battery_timestamp=False):
     timestamp = datetime.datetime.now()
@@ -139,9 +172,6 @@ def print_colored(message, color=GRAY, is_battery_timestamp=False):
         log_file_handle.write(log_msg + "\n")
         log_file_handle.flush()
 
-# ---------------------------------------------------
-# FUNZIONE DI TRASFERIMENTO FILE
-# ---------------------------------------------------
 def invia_o_sposta_audio(file_path_to_send):
     if not os.path.exists(file_path_to_send):
         print_colored(f"ERRORE: File sorgente {file_path_to_send} non trovato!", RED)
@@ -195,83 +225,116 @@ def is_audio_loud_enough(audio_frame, energy_thresh):
     rms = np.sqrt(np.mean(samples**2))
     return rms > energy_thresh
 
+# --- VERSIONE FINALE CON ADATTAMENTO DI RATE E CHUNK ---
 def record_audio_vad():
     global last_timestamp
     print_colored(f"Inizio ciclo di ascolto (Energy: {ENERGY_THRESHOLD}, Silence: {SILENCE_THRESHOLD_SECONDS}s, MaxRec: {MAX_RECORD_SECONDS}s, MinDur: {DURATA_MINIMA}s)", GRAY)
     FORMAT = pyaudio.paInt16
-    FRAME_DURATION_MS = (CHUNK * 1000) / RATE
-    if FRAME_DURATION_MS not in [10, 20, 30]:
-        print_colored(f"ATTENZIONE: Durata frame ({FRAME_DURATION_MS:.1f}ms) non ottimale per VAD.", RED)
-
-    p_audio = pyaudio.PyAudio()
-    sample_width_bytes = p_audio.get_sample_size(FORMAT)
-
-    device_idx = find_input_device(p_audio, CHANNELS, os.getenv("INPUT_DEVICE_KEYWORD"))
-    if device_idx is None:
-        print_colored("ERRORE: nessun device di input trovato!", RED)
-        p_audio.terminate()
-        return 0
-    device_info = p_audio.get_device_info_by_index(device_idx)
-    print_colored(f"Microfono selezionato: '{device_info['name']}' (index {device_idx})", GRAY)
-
-    try:
-        audio_stream = p_audio.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK, input_device_index=device_idx)
-    except Exception as e_audio_init:
-        print_colored(f"ERRORE CRITICO: Impossibile aprire lo stream: {e_audio_init}", RED)
-        p_audio.terminate()
-        return 0
-
-    vad_processor = webrtcvad.Vad(VAD_MODE)
+    
+    p_audio = None
+    audio_stream = None
     recorded_frames_buffer = []
     is_currently_recording = False
-    recording_start = 0.0
-    time_of_last_voice = time.time()
     
-    print_colored(f"Ascolto avviato... (VAD Mode: {VAD_MODE})", GRAY)
-    try:
-        while True:
-            now = time.time()
-            if now - last_timestamp >= 10:
-                print_colored("", GRAY, is_battery_timestamp=True)
-                last_timestamp = now
-            try:
-                frame = audio_stream.read(CHUNK, exception_on_overflow=False)
-            except IOError:
-                continue
+    # Valori che verranno determinati dinamicamente
+    RATE = 0
+    CHUNK = 0
+    sample_width_bytes = 0
 
-            loud = is_audio_loud_enough(frame, ENERGY_THRESHOLD)
-            speech = loud and vad_processor.is_speech(frame, RATE)
+    with silence_alsa_errors():
+        try:
+            p_audio = pyaudio.PyAudio()
+            sample_width_bytes = p_audio.get_sample_size(FORMAT)
 
-            if speech:
-                time_of_last_voice = now
-                if not is_currently_recording:
-                    is_currently_recording = True
-                    recorded_frames_buffer = []
-                    recording_start = now
-                    print_colored("Voce rilevata! Inizio registrazione...", GREEN)
-                recorded_frames_buffer.append(frame)
-            elif is_currently_recording:
-                recorded_frames_buffer.append(frame)
-                if now - time_of_last_voice > SILENCE_THRESHOLD_SECONDS:
-                    print_colored(f"Fine registrazione: silenzio > {SILENCE_THRESHOLD_SECONDS:.1f}s.", RED)
+            device_idx = find_input_device(p_audio, CHANNELS, os.getenv("INPUT_DEVICE_KEYWORD"))
+            if device_idx is None:
+                print_colored("ERRORE: nessun device di input trovato!", RED)
+                return 0
+            device_info = p_audio.get_device_info_by_index(device_idx)
+            print_colored(f"Microfono selezionato: '{device_info['name']}' (index {device_idx})", GRAY)
+
+            # 1. Trova un RATE supportato
+            rates_to_try = [DEFAULT_RATE, 16000, 48000, 32000, 8000, 44100]
+            unique_rates = sorted(set(rates_to_try), key=rates_to_try.index)
+            RATE = find_supported_rate(p_audio, device_idx, CHANNELS, unique_rates)
+            
+            if not RATE:
+                print_colored(f"ERRORE CRITICO: Il microfono non supporta nessuna delle frequenze VAD compatibili.", RED)
+                return 0
+            
+            # 2. Calcola il CHUNK corretto per il RATE trovato, per avere una durata frame valida (es. 20ms)
+            VAD_FRAME_DURATION_MS = 20  # Usiamo 20ms come target
+            CHUNK = int(RATE * VAD_FRAME_DURATION_MS / 1000)
+            
+            print_colored(f"Configurazione audio dinamica: RATE={RATE}Hz, CHUNK={CHUNK} (per {VAD_FRAME_DURATION_MS}ms di frame)", BLUE)
+
+            # Apri lo stream con i parametri calcolati
+            audio_stream = p_audio.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK, input_device_index=device_idx)
+
+            vad_processor = webrtcvad.Vad(VAD_MODE)
+            recording_start = 0.0
+            time_of_last_voice = time.time()
+
+            print_colored(f"Ascolto avviato... (VAD Mode: {VAD_MODE})", GRAY)
+            while True:
+                now = time.time()
+                if now - last_timestamp >= 10:
+                    print_colored("", GRAY, is_battery_timestamp=True)
+                    last_timestamp = now
+                try:
+                    frame = audio_stream.read(CHUNK, exception_on_overflow=False)
+                except IOError as e:
+                    print_colored(f"ATTENZIONE: Errore di I/O dallo stream audio (overflow?): {e}", RED)
+                    continue
+
+                # Controllo di sicurezza sulla lunghezza del frame
+                if len(frame) != CHUNK * sample_width_bytes:
+                    continue
+
+                loud = is_audio_loud_enough(frame, ENERGY_THRESHOLD)
+                
+                try:
+                    speech = loud and vad_processor.is_speech(frame, RATE)
+                except Exception as vad_error:
+                    print_colored(f"ERRORE VAD: {vad_error}. La registrazione si interrompe.", RED)
                     break
-            if is_currently_recording and (now - recording_start > MAX_RECORD_SECONDS):
-                print_colored(f"Fine registrazione: max {MAX_RECORD_SECONDS}s raggiunti.", RED)
-                break
-    finally:
-        audio_stream.stop_stream()
-        audio_stream.close()
-        p_audio.terminate()
+                
+                if speech:
+                    time_of_last_voice = now
+                    if not is_currently_recording:
+                        is_currently_recording = True
+                        recorded_frames_buffer = []
+                        recording_start = now
+                        print_colored("Voce rilevata! Inizio registrazione...", GREEN)
+                    recorded_frames_buffer.append(frame)
+                elif is_currently_recording:
+                    recorded_frames_buffer.append(frame)
+                    if now - time_of_last_voice > SILENCE_THRESHOLD_SECONDS:
+                        print_colored(f"Fine registrazione: silenzio > {SILENCE_THRESHOLD_SECONDS:.1f}s.", RED)
+                        break
+                if is_currently_recording and (now - recording_start > MAX_RECORD_SECONDS):
+                    print_colored(f"Fine registrazione: max {MAX_RECORD_SECONDS}s raggiunti.", RED)
+                    break
+        
+        except Exception as e_audio_init:
+            print_colored(f"ERRORE CRITICO NELLA GESTIONE AUDIO: {e_audio_init}", RED)
+            import traceback
+            if log_file_handle: traceback.print_exc(file=log_file_handle)
+            return 0
+        finally:
+            if audio_stream:
+                audio_stream.stop_stream()
+                audio_stream.close()
+            if p_audio:
+                p_audio.terminate()
 
-    if is_currently_recording and recorded_frames_buffer:
+    if is_currently_recording and recorded_frames_buffer and RATE > 0:
         duration = (len(recorded_frames_buffer) * CHUNK) / RATE
 
-        # --- NUOVA MODIFICA: Generazione del nome file dinamico ---
         timestamp_str = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
         dynamic_filename_base = f"{POSTAZIONE_PREFIX}-{timestamp_str}.wav"
         output_filepath = os.path.join(PROJECT_DIRECTORY, dynamic_filename_base)
-        # --- FINE MODIFICA ---
-
+        
         os.makedirs(os.path.dirname(output_filepath), exist_ok=True)
         try:
             with wave.open(output_filepath, 'wb') as wf:
@@ -295,6 +358,7 @@ def record_audio_vad():
         except Exception as e:
             print_colored(f"ERRORE salvataggio/gestione WAV: {e}", RED)
     return 0
+# --- FINE FUNZIONE MODIFICATA ---
 
 # ---------------------------------------------------
 # MAIN LOOP
@@ -307,8 +371,10 @@ if __name__ == "__main__":
             print_colored(f"'{MAC_DESTINATION_DIR}'", BLUE)
         elif IS_RASPBERRY:
             print_colored(f"Sistema rilevato: Raspberry Pi (Prefisso: {POSTAZIONE_PREFIX}). I file verranno inviati con lo script '{SCRIPT_PATH}'", BLUE)
+            if IS_LINUX: print_colored("INFO: Gestione errori ALSA per Linux/RPi ATTIVA.", GRAY)
         else:
              print_colored(f"Sistema rilevato: {DETECTED_SYSTEM} (Prefisso: {POSTAZIONE_PREFIX}). I file verranno inviati con lo script '{SCRIPT_PATH}'", BLUE)
+             if IS_LINUX: print_colored("INFO: Gestione errori ALSA per Linux/RPi ATTIVA.", GRAY)
 
         last_timestamp = time.time()
         while True:
