@@ -69,6 +69,9 @@ FOLDER_TO_WATCH = PROJECT_ROOT / "FROM_TABLES"
 WORK_IN_PROGRESS_DIR = PROJECT_ROOT / "WORK_IN_PROGRESS"
 ARCHIVE_DIR = FOLDER_TO_WATCH / "Archive"
 TRANSCRIPTION_ERROR_DIR = ARCHIVE_DIR / "transcription_errors"
+# --- INIZIO MODIFICA 1: Nuova cartella di archiviazione ---
+SHORT_TRANSCRIPTION_DIR = ARCHIVE_DIR / "short_transcriptions"
+# --- FINE MODIFICA 1 ---
 CHECK_INTERVAL_SECONDS = int(os.getenv("CHECK_INTERVAL_SECONDS", "5"))
 MIN_CHARS_TRANSCRIPTION = int(os.getenv("CARATTERI_MINIMI", "0"))
 
@@ -149,11 +152,27 @@ def process_audio_files():
             print(SEPARATOR + "\n")
             continue
 
+        # --- INIZIO MODIFICA 2: Logica di archiviazione per trascrizioni corte ---
         if MIN_CHARS_TRANSCRIPTION > 0 and len(transcribed_text) < MIN_CHARS_TRANSCRIPTION:
-            print(f"{WARNING_COLOR}{get_timestamp()} AVVISO: Trascrizione troppo corta ({len(transcribed_text)}/{MIN_CHARS_TRANSCRIPTION} caratteri). File ignorato.")
+            print(f"{WARNING_COLOR}{get_timestamp()} AVVISO: Trascrizione troppo corta ({len(transcribed_text)}/{MIN_CHARS_TRANSCRIPTION} caratteri).")
             print(f"{TEXT_PREVIEW_COLOR}Contenuto: \"{transcribed_text}\"")
+
+            try:
+                # Creiamo una sottocartella per il tavolo per mantenere l'organizzazione
+                short_archive_table_dir = SHORT_TRANSCRIPTION_DIR / prefix
+                short_archive_table_dir.mkdir(parents=True, exist_ok=True)
+                destination_path = short_archive_table_dir / filename
+                
+                # Spostiamo il file audio originale
+                shutil.move(str(audio_path), str(destination_path))
+                print(f"{get_timestamp()} ARCHIVIATO (corto) IN: {PATH_COLOR}{destination_path}")
+
+            except Exception as e:
+                print(f"{ERROR_COLOR}{get_timestamp()} ERRORE durante l'archiviazione del file corto: {e}")
+            
             print(SEPARATOR + "\n")
-            continue
+            continue # Passa al prossimo file
+        # --- FINE MODIFICA 2 ---
 
         if not transcribed_text:
             print(f"{ERROR_COLOR}{get_timestamp()} Whisper ha restituito una trascrizione vuota.")
@@ -186,8 +205,10 @@ def main():
     WORK_IN_PROGRESS_DIR.mkdir(exist_ok=True)
     ARCHIVE_DIR.mkdir(exist_ok=True)
     TRANSCRIPTION_ERROR_DIR.mkdir(parents=True, exist_ok=True)
+    # --- INIZIO MODIFICA 3: Creazione della nuova directory all'avvio ---
+    SHORT_TRANSCRIPTION_DIR.mkdir(parents=True, exist_ok=True)
+    # --- FINE MODIFICA 3 ---
 
-    # --- INIZIO BLOCCO MODIFICATO ---
     # Creiamo una versione mascherata della chiave API per la stampa (per sicurezza)
     api_key_display = f"{OPENAI_API_KEY[:5]}...{OPENAI_API_KEY[-4:]}" if OPENAI_API_KEY else f"{ERROR_COLOR}NON IMPOSTATA"
 
@@ -204,7 +225,6 @@ def main():
     
     print(f"{SUCCESS_COLOR}-----------------------------------------")
     print(f"{TAVOLO_COLOR}In attesa di file... (Premi CTRL+C per terminare)")
-    # --- FINE BLOCCO MODIFICATO ---
 
     try:
         while True:
