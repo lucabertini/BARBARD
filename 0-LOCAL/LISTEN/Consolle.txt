@@ -1,0 +1,593 @@
+15:19:41 --- Configurazione Caricata ---
+15:19:41 - SISTEMA RILEVATO: MAC (Locale)
+15:19:41 - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:19:41 - LOG_FILE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+15:19:41 - SCRIPT_PATH: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+15:19:41 - POSTAZIONE_PREFIX: 5
+15:19:41 - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:19:41 - TARGET_MAC_FALLBACK_PATH: /Users/lucabertini/Desktop/audio_registrati_fallback/
+15:19:41 - VAD_MODE: 3, ENERGY_THRESHOLD: 400
+15:19:41 - TIMEOUTS (Silence/Max/Min): 10.0s / 30s / 10.0s
+15:19:41 ---------------------------------
+15:19:41 AVVIO SCRIPT (2025-06-26 15:19:41)
+15:19:41 Inizio ciclo di ascolto...
+15:19:41 Ascolto avviato...
+15:19:52 --- Configurazione Caricata ---
+15:19:52 - SISTEMA RILEVATO: MAC (Locale)
+15:19:52 - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:19:52 - LOG_FILE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+15:19:52 - SCRIPT_PATH: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+15:19:52 - POSTAZIONE_PREFIX: 5
+15:19:52 - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:19:52 - TARGET_MAC_FALLBACK_PATH: /Users/lucabertini/Desktop/audio_registrati_fallback/
+15:19:52 - VAD_MODE: 3, ENERGY_THRESHOLD: 400
+15:19:52 - TIMEOUTS (Silence/Max/Min): 10.0s / 30s / 10.0s
+15:19:52 ---------------------------------
+15:19:52 AVVIO SCRIPT (2025-06-26 15:19:52)
+15:19:52 Inizio ciclo di ascolto...
+15:19:52 Ascolto avviato...
+VIVO!: 15:20:02
+VIVO!: 15:20:12
+VIVO!: 15:20:22
+VIVO!: 15:20:32
+15:21:19 --- Configurazione Caricata ---
+15:21:19 - SISTEMA RILEVATO: MAC (Locale)
+15:21:19 - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:21:19 - LOG_FILE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+15:21:19 - SCRIPT_PATH: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+15:21:19 - POSTAZIONE_PREFIX: 5
+15:21:19 - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:21:19 - TARGET_MAC_FALLBACK_PATH: /Users/lucabertini/Desktop/audio_registrati_fallback/
+15:21:19 - VAD_MODE: 3, ENERGY_THRESHOLD: 400
+15:21:19 - TIMEOUTS (Silence/Max/Min): 10.0s / 30s / 10.0s
+15:21:19 ---------------------------------
+15:21:19 AVVIO SCRIPT (2025-06-26 15:21:19)
+15:21:19 Inizio ciclo di ascolto...
+15:21:19 Ascolto avviato...
+15:21:20 Voce rilevata! Inizio registrazione...
+VIVO!: 15:21:29
+VIVO!: 15:21:39
+VIVO!: 15:21:49
+15:21:50 File salvato: recorded_audio.wav (Durata: 30.0s, Stop: Tempo massimo raggiunto)
+15:21:50 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:21:50 Esecuzione: /bin/bash /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:21:50 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_152150.wav
+SUCCESSO (Local Script): File copiato.
+15:21:51 Inizio ciclo di ascolto...
+15:21:51 Ascolto avviato...
+15:21:52 Voce rilevata! Inizio registrazione...
+VIVO!: 15:21:59
+VIVO!: 15:22:09
+VIVO!: 15:22:19
+15:22:23 File salvato: recorded_audio.wav (Durata: 30.0s, Stop: Tempo massimo raggiunto)
+15:22:23 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:22:23 Esecuzione: /bin/bash /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:22:23 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_152223.wav
+SUCCESSO (Local Script): File copiato.
+15:22:24 Inizio ciclo di ascolto...
+15:22:24 Ascolto avviato...
+15:43:25 --- Configurazione Caricata ---
+15:43:25 - SISTEMA RILEVATO: MAC
+15:43:25 - POSTAZIONE_PREFIX: 5 (definito in Tavolo.py)
+15:43:25 - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:43:25 - MAC_LOCAL_DESTINATION: /Users/lucabertini/Desktop/AudioRegistratiLocalmente
+15:43:25 - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+15:43:25 ---------------------------------
+15:43:25 AVVIO SCRIPT (2025-06-26 15:43:25)
+15:43:25 Inizio ciclo di ascolto...
+15:43:25 Ascolto avviato...
+15:43:25 Voce rilevata! Inizio registrazione...
+VIVO!: 15:43:35
+VIVO!: 15:43:45
+VIVO!: 15:43:55
+15:43:55 File salvato: recorded_audio.wav (Durata: 30.0s, Stop: Tempo massimo raggiunto)
+15:43:55 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:43:55 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Desktop/AudioRegistratiLocalmente/5-20250626_154355.wav
+SUCCESSO (Local Script): File copiato.
+15:43:56 Inizio ciclo di ascolto...
+15:43:56 Ascolto avviato...
+15:43:57 Voce rilevata! Inizio registrazione...
+VIVO!: 15:44:05
+VIVO!: 15:44:15
+VIVO!: 15:44:25
+15:47:00 --- Configurazione Caricata ---
+15:47:00 - SISTEMA RILEVATO: MAC
+15:47:00 - POSTAZIONE_PREFIX: 5 (definito in Tavolo.py)
+15:47:00 - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:47:00 - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:47:00 - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+15:47:00 ---------------------------------
+15:47:00 AVVIO SCRIPT (2025-06-26 15:47:00)
+15:47:00 Inizio ciclo di ascolto...
+15:47:00 Ascolto avviato...
+15:47:00 Voce rilevata! Inizio registrazione...
+VIVO!: 15:47:10
+15:47:19 File salvato: recorded_audio.wav (Durata: 18.6s, Stop: Silenzio prolungato)
+15:47:19 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:47:19 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_154719.wav
+SUCCESSO (Local Script): File copiato.
+15:47:20 Inizio ciclo di ascolto...
+15:47:20 Ascolto avviato...
+VIVO!: 15:47:20
+15:47:25 Voce rilevata! Inizio registrazione...
+VIVO!: 15:47:30
+VIVO!: 15:47:40
+VIVO!: 15:47:50
+15:47:56 File salvato: recorded_audio.wav (Durata: 30.0s, Stop: Tempo massimo raggiunto)
+15:47:56 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:47:56 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_154756.wav
+SUCCESSO (Local Script): File copiato.
+15:47:57 Inizio ciclo di ascolto...
+15:47:57 Ascolto avviato...
+15:47:57 Voce rilevata! Inizio registrazione...
+VIVO!: 15:48:00
+VIVO!: 15:48:10
+15:51:46 --- Configurazione Caricata ---
+15:51:46 - SISTEMA RILEVATO: MAC
+15:51:46 - POSTAZIONE_PREFIX: 99 (letto da .env)
+15:51:46 - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:51:46 - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:51:46 - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+15:51:46 ---------------------------------
+15:51:46 AVVIO SCRIPT (2025-06-26 15:51:46)
+15:51:46 Inizio ciclo di ascolto...
+15:51:46 Ascolto avviato...
+15:51:46 Voce rilevata! Inizio registrazione...
+VIVO!: 15:51:56
+VIVO!: 15:52:06
+VIVO!: 15:52:16
+15:52:16 File salvato: recorded_audio.wav (Durata: 30.0s, Stop: Tempo massimo raggiunto)
+15:52:16 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:52:16 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/99-20250626_155216.wav
+SUCCESSO (Local Script): File copiato.
+15:52:17 Inizio ciclo di ascolto...
+15:52:17 Ascolto avviato...
+15:52:17 Voce rilevata! Inizio registrazione...
+VIVO!: 15:52:26
+VIVO!: 15:52:36
+VIVO!: 15:52:46
+15:52:47 File salvato: recorded_audio.wav (Durata: 30.0s, Stop: Tempo massimo raggiunto)
+15:52:47 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:52:47 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/99-20250626_155247.wav
+SUCCESSO (Local Script): File copiato.
+15:52:48 Inizio ciclo di ascolto...
+15:52:48 Ascolto avviato...
+15:52:50 Voce rilevata! Inizio registrazione...
+VIVO!: 15:52:56
+VIVO!: 15:53:06
+VIVO!: 15:53:16
+15:53:21 --- Configurazione Caricata ---
+15:53:21 - SISTEMA RILEVATO: MAC
+15:53:21 - POSTAZIONE_PREFIX: 5 (letto da .env)
+15:53:21 - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:53:21 - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:53:21 - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+15:53:21 ---------------------------------
+15:53:21 AVVIO SCRIPT (2025-06-26 15:53:21)
+15:53:21 Inizio ciclo di ascolto...
+15:53:21 Ascolto avviato...
+15:53:21 Voce rilevata! Inizio registrazione...
+15:57:01 =====================================================
+15:57:01        AVVIO E CARICAMENTO CONFIGURAZIONE
+15:57:01 =====================================================
+15:57:01 SISTEMA RILEVATO: MAC
+15:57:01 -----------------------------------------------------
+15:57:01 Impostazioni Generali e Percorsi:
+15:57:01   - POSTAZIONE_PREFIX: 5
+15:57:01   - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+15:57:01   - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+15:57:01   - SCRIPT_EXECUTOR: /bin/bash
+15:57:01   - LOG_FILE (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+15:57:01   - WAVE_OUTPUT_FILENAME (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+15:57:01   - SCRIPT_PATH (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+15:57:01 -----------------------------------------------------
+15:57:01 Parametri di Registrazione e VAD:
+15:57:01   - VAD_MODE: 3
+15:57:01   - RATE: 16000 Hz
+15:57:01   - CHANNELS: 1
+15:57:01   - CHUNK: 320 frames
+15:57:01   - ENERGY_THRESHOLD: 400
+15:57:01   - SILENCE_THRESHOLD_SECONDS: 10.0s
+15:57:01   - MAX_RECORD_SECONDS: 30s
+15:57:01   - DURATA_MINIMA: 10.0s
+15:57:01 -----------------------------------------------------
+15:57:01 Impostazioni di Destinazione (leggi da .env):
+15:57:01   --- Per Raspberry Pi (invio remoto) ---
+15:57:01   - TARGET_MAC_IP: 172.20.10.5
+15:57:01   - TARGET_MAC_USER: lucabertini
+15:57:01   - TARGET_MAC_PATH_ON_REMOTE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:57:01   --- Per Mac (copia locale) ---
+15:57:01   - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+15:57:01 =====================================================
+15:57:01 AVVIO SCRIPT (2025-06-26 15:57:01)
+15:57:01 Inizio ciclo di ascolto...
+15:57:01 Ascolto avviato...
+15:57:02 Voce rilevata! Inizio registrazione...
+VIVO!: 15:57:11
+VIVO!: 15:57:21
+16:14:05 =====================================================
+16:14:05        AVVIO E CARICAMENTO CONFIGURAZIONE
+16:14:05 =====================================================
+16:14:05 SISTEMA RILEVATO: MAC
+16:14:05 -----------------------------------------------------
+16:14:05 Impostazioni Generali e Percorsi:
+16:14:05   - POSTAZIONE_PREFIX: 5
+16:14:05   - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+16:14:05   - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+16:14:05   - SCRIPT_EXECUTOR: /bin/bash
+16:14:05   - LOG_FILE (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+16:14:05   - WAVE_OUTPUT_FILENAME (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:14:05   - SCRIPT_PATH (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+16:14:05 -----------------------------------------------------
+16:14:05 Parametri di Registrazione e VAD:
+16:14:05   - VAD_MODE: 3
+16:14:05   - RATE: 16000 Hz
+16:14:05   - CHANNELS: 1
+16:14:05   - CHUNK: 320 frames
+16:14:05   - ENERGY_THRESHOLD: 400
+16:14:05   - SILENCE_THRESHOLD_SECONDS: 10.0s
+16:14:05   - MAX_RECORD_SECONDS: 30s
+16:14:05   - DURATA_MINIMA: 10.0s
+16:14:05 -----------------------------------------------------
+16:14:05 Impostazioni di Destinazione (leggi da .env):
+16:14:05   --- Per Raspberry Pi (invio remoto) ---
+16:14:05   - TARGET_MAC_IP: 172.20.10.5
+16:14:05   - TARGET_MAC_USER: lucabertini
+16:14:05   - TARGET_MAC_PATH_ON_REMOTE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:14:05   --- Per Mac (copia locale) ---
+16:14:05   - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:14:05 =====================================================
+16:14:05 AVVIO SCRIPT (2025-06-26 16:14:05)
+16:14:05 Inizio ciclo di ascolto...
+16:14:05 Apertura stream audio (Device: Default)...
+16:14:05 Ascolto avviato...
+16:14:05 Voce rilevata! Inizio registrazione...
+VIVO!: 16:14:15
+VIVO!: 16:14:25
+VIVO!: 16:14:35
+16:14:35 Stream audio chiuso.
+16:14:35 Registrazione terminata (Tempo massimo raggiunto, 30.0s). Salvataggio...
+16:14:35 File salvato: recorded_audio.wav
+16:14:35 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:14:35 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_161435.wav
+SUCCESSO (Local Script): File copiato.
+16:14:36 Inizio ciclo di ascolto...
+16:14:36 Apertura stream audio (Device: Default)...
+16:14:36 Ascolto avviato...
+16:14:36 Voce rilevata! Inizio registrazione...
+16:28:18 =====================================================
+16:28:18        AVVIO E CARICAMENTO CONFIGURAZIONE
+16:28:18 =====================================================
+16:28:18 SISTEMA RILEVATO: MAC
+16:28:18 -----------------------------------------------------
+16:28:18 Impostazioni Generali e Percorsi:
+16:28:18   - POSTAZIONE_PREFIX: 5
+16:28:18   - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+16:28:18   - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+16:28:18   - SCRIPT_EXECUTOR: /bin/bash
+16:28:18   - LOG_FILE (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+16:28:18   - WAVE_OUTPUT_FILENAME (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:28:18   - SCRIPT_PATH (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+16:28:18 -----------------------------------------------------
+16:28:18 Parametri di Registrazione e VAD:
+16:28:18   - VAD_MODE: 3
+16:28:18   - RATE: 16000 Hz
+16:28:18   - CHANNELS: 1
+16:28:18   - CHUNK: 320 frames
+16:28:18   - ENERGY_THRESHOLD: 400
+16:28:18   - SILENCE_THRESHOLD_SECONDS: 10.0s
+16:28:18   - MAX_RECORD_SECONDS: 30s
+16:28:18   - DURATA_MINIMA: 10.0s
+16:28:18 -----------------------------------------------------
+16:28:18 Impostazioni di Destinazione (leggi da .env):
+16:28:18   --- Per Raspberry Pi (invio remoto) ---
+16:28:18   - TARGET_MAC_IP: 172.20.10.5
+16:28:18   - TARGET_MAC_USER: lucabertini
+16:28:18   - TARGET_MAC_PATH_ON_REMOTE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:28:18   --- Per Mac (copia locale) ---
+16:28:18   - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:28:18 =====================================================
+16:28:18 AVVIO SCRIPT (2025-06-26 16:28:18)
+16:28:18 Inizio ciclo di ascolto...
+16:28:18 Apertura stream audio (Device: Default)...
+16:28:18 Ascolto avviato...
+16:28:19 Voce rilevata! Inizio registrazione...
+VIVO!: 16:28:28
+16:28:32 Stream audio chiuso.
+16:28:32 Registrazione terminata (Silenzio prolungato, 13.4s). Salvataggio...
+16:28:32 File salvato: recorded_audio.wav
+16:28:32 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:28:32 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_162832.wav
+SUCCESSO (Local Script): File copiato.
+16:28:33 Inizio ciclo di ascolto...
+16:28:33 Apertura stream audio (Device: Default)...
+16:28:34 Ascolto avviato...
+16:28:37 Voce rilevata! Inizio registrazione...
+VIVO!: 16:28:38
+VIVO!: 16:28:48
+VIVO!: 16:28:58
+16:29:07 Stream audio chiuso.
+16:29:07 Registrazione terminata (Tempo massimo raggiunto, 30.0s). Salvataggio...
+16:29:07 File salvato: recorded_audio.wav
+16:29:07 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:29:07 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_162907.wav
+SUCCESSO (Local Script): File copiato.
+16:29:08 Inizio ciclo di ascolto...
+16:29:08 Apertura stream audio (Device: Default)...
+16:29:08 Ascolto avviato...
+VIVO!: 16:29:08
+16:29:09 Voce rilevata! Inizio registrazione...
+VIVO!: 16:29:19
+VIVO!: 16:29:29
+16:38:48 =====================================================
+16:38:48        AVVIO E CARICAMENTO CONFIGURAZIONE
+16:38:48 =====================================================
+16:38:48 SISTEMA RILEVATO: MAC
+16:38:48 -----------------------------------------------------
+16:38:48 Impostazioni Generali e Percorsi:
+16:38:48   - POSTAZIONE_PREFIX: 5
+16:38:48   - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+16:38:48   - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+16:38:48   - SCRIPT_EXECUTOR: /bin/bash
+16:38:48   - LOG_FILE (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+16:38:48   - WAVE_OUTPUT_FILENAME (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:38:48   - SCRIPT_PATH (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+16:38:48 -----------------------------------------------------
+16:38:48 Parametri di Registrazione e VAD:
+16:38:48   - VAD_MODE: 3
+16:38:48   - RATE: 16000 Hz
+16:38:48   - CHANNELS: 1
+16:38:48   - CHUNK: 320 frames
+16:38:48   - ENERGY_THRESHOLD: 400
+16:38:48   - SILENCE_THRESHOLD_SECONDS: 10.0s
+16:38:48   - MAX_RECORD_SECONDS: 30s
+16:38:48   - DURATA_MINIMA: 10.0s
+16:38:48 -----------------------------------------------------
+16:38:48 Impostazioni di Destinazione (leggi da .env):
+16:38:48   --- Per Raspberry Pi (invio remoto) ---
+16:38:48   - TARGET_MAC_IP: 172.20.10.5
+16:38:48   - TARGET_MAC_USER: lucabertini
+16:38:48   - TARGET_MAC_PATH_ON_REMOTE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:38:48   --- Per Mac (copia locale) ---
+16:38:48   - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:38:48 =====================================================
+16:38:48 AVVIO SCRIPT (2025-06-26 16:38:48)
+16:38:48 Inizio ciclo di ascolto...
+16:38:48 Apertura stream audio (Device: Default)...
+16:38:48 Ascolto avviato...
+16:38:49 Voce rilevata! Inizio registrazione...
+VIVO!: 16:38:58
+VIVO!: 16:39:08
+VIVO!: 16:39:18
+16:39:19 Stream audio chiuso.
+16:39:19 Registrazione terminata (Tempo massimo raggiunto, 30.0s). Salvataggio...
+16:39:19 File salvato: recorded_audio.wav
+16:39:19 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:39:19 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_163919.wav
+SUCCESSO (Local Script): File copiato.
+16:39:20 Inizio ciclo di ascolto...
+16:39:20 Apertura stream audio (Device: Default)...
+16:39:20 Ascolto avviato...
+16:39:20 Voce rilevata! Inizio registrazione...
+VIVO!: 16:39:28
+VIVO!: 16:39:38
+VIVO!: 16:39:48
+16:39:50 Stream audio chiuso.
+16:39:50 Registrazione terminata (Tempo massimo raggiunto, 30.0s). Salvataggio...
+16:39:50 File salvato: recorded_audio.wav
+16:39:50 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:39:50 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_163950.wav
+SUCCESSO (Local Script): File copiato.
+16:39:51 Inizio ciclo di ascolto...
+16:39:51 Apertura stream audio (Device: Default)...
+16:39:51 Ascolto avviato...
+16:39:52 Voce rilevata! Inizio registrazione...
+16:43:22 =====================================================
+16:43:22        AVVIO E CARICAMENTO CONFIGURAZIONE
+16:43:22 =====================================================
+16:43:22 SISTEMA RILEVATO: MAC
+16:43:22 -----------------------------------------------------
+16:43:22 Impostazioni Generali e Percorsi:
+16:43:22   - POSTAZIONE_PREFIX: 5
+16:43:22   - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+16:43:22   - FALLBACK_PATH: /Users/lucabertini/Desktop/audio_fallback_mac
+16:43:22   - SCRIPT_EXECUTOR: /bin/bash
+16:43:22   - LOG_FILE (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+16:43:22   - WAVE_OUTPUT_FILENAME (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:43:22   - SCRIPT_PATH (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+16:43:22 -----------------------------------------------------
+16:43:22 Parametri di Registrazione e VAD:
+16:43:22   - VAD_MODE: 3
+16:43:22   - RATE: 16000 Hz
+16:43:22   - CHANNELS: 1
+16:43:22   - CHUNK: 320 frames
+16:43:22   - ENERGY_THRESHOLD: 400
+16:43:22   - SILENCE_THRESHOLD_SECONDS: 10.0s
+16:43:22   - MAX_RECORD_SECONDS: 30s
+16:43:22   - DURATA_MINIMA: 10.0s
+16:43:22 -----------------------------------------------------
+16:43:22 Impostazioni di Destinazione (leggi da .env):
+16:43:22   --- Per Raspberry Pi (invio remoto) ---
+16:43:22   - TARGET_MAC_IP: 172.20.10.5
+16:43:22   - TARGET_MAC_USER: lucabertini
+16:43:22   - TARGET_MAC_PATH_ON_REMOTE: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:43:22   --- Per Mac (copia locale) ---
+16:43:22   - MAC_LOCAL_DESTINATION: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES
+16:43:22 =====================================================
+16:43:22 AVVIO SCRIPT (2025-06-26 16:43:22)
+16:43:22 Inizio ciclo di ascolto...
+16:43:22 Apertura stream audio (Device: Default)...
+16:43:22 Ascolto avviato...
+16:43:22 Voce rilevata! Inizio registrazione...
+VIVO!: 16:43:32
+VIVO!: 16:43:42
+VIVO!: 16:43:52
+16:43:53 Stream audio chiuso.
+16:43:53 Registrazione terminata (Tempo massimo raggiunto, 30.0s). Salvataggio...
+16:43:53 File salvato: recorded_audio.wav
+16:43:53 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:43:53 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_164353.wav
+SUCCESSO (Local Script): File copiato.
+16:43:54 Inizio ciclo di ascolto...
+16:43:54 Apertura stream audio (Device: Default)...
+16:43:54 Ascolto avviato...
+16:43:54 Voce rilevata! Inizio registrazione...
+16:55:14 =====================================================
+16:55:14        AVVIO E CARICAMENTO CONFIGURAZIONE
+16:55:14 =====================================================
+16:55:14 SISTEMA RILEVATO: MAC
+16:55:14 -----------------------------------------------------
+16:55:14 Impostazioni Generali e Percorsi:
+16:55:14   - POSTAZIONE_PREFIX: 5
+16:55:14   - PROJECT_DIRECTORY: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN
+16:55:14   - SCRIPT_EXECUTOR: /bin/bash
+16:55:14   - LOG_FILE (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/Consolle.txt
+16:55:14   - WAVE_OUTPUT_FILENAME (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:55:14   - SCRIPT_PATH (calcolato): /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh
+16:55:14 -----------------------------------------------------
+16:55:14 Parametri di Registrazione e VAD:
+16:55:14   - VAD_MODE: 3
+16:55:14   - RATE: 16000 Hz
+16:55:14   - CHANNELS: 1
+16:55:14   - CHUNK: 320 frames
+16:55:14   - ENERGY_THRESHOLD: 400
+16:55:14   - SILENCE_THRESHOLD_SECONDS: 10.0s
+16:55:14   - MAX_RECORD_SECONDS: 30s
+16:55:14   - DURATA_MINIMA: 10.0s
+16:55:14 =====================================================
+16:55:14 AVVIO SCRIPT (2025-06-26 16:55:14)
+16:55:14 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+16:55:14 Microfono di default trovato: MacBook Pro Microphone
+16:55:14 Ascolto avviato... (VAD Mode: 3)
+16:55:14 Voce rilevata! (Energia > 400). Inizio registrazione...
+VIVO!: 16:55:24
+VIVO!: 16:55:34
+VIVO!: 16:55:44
+16:55:44 Fine registrazione: tempo massimo (30s) raggiunto.
+16:55:44 File audio salvato: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav (Durata: 30.0s). Stop: Max Rec (30s)
+16:55:44 Durata (30.0s) >= minima (10.0s). Procedo con lo script esterno.
+16:55:44 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:55:44 Esecuzione comando: /bin/bash /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+16:55:44 Output script:
+INFO (Local Script): Tentativo di copia in /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/5-20250626_165544.wav
+SUCCESSO (Local Script): File copiato.
+16:55:44 Spostamento (Locale) completato con successo tramite script.
+16:55:45 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+16:55:45 Microfono di default trovato: MacBook Pro Microphone
+16:55:45 Ascolto avviato... (VAD Mode: 3)
+16:55:45 Voce rilevata! (Energia > 400). Inizio registrazione...
+17:42:24 AVVIO SCRIPT 2025-06-26 17:42:24
+17:42:24 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:42:24 Microfono selezionato (index 1)
+17:42:27 Ascolto avviato... (VAD Mode: 3)
+17:42:42 AVVIO SCRIPT 2025-06-26 17:42:42
+17:42:42 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:42:42 Microfono selezionato (index 1)
+17:42:42 Ascolto avviato... (VAD Mode: 3)
+17:42:44 Voce rilevata! Inizio registrazione...
+VIVO!: 17:42:52
+VIVO!: 17:43:02
+17:43:02 Fine registrazione: silenzio 10.0s.
+17:43:03 File audio salvato: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav (Durata: 18.6s).
+17:43:03 Durata ok (18.6s). Invio file...
+17:43:03 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:43:03 Esecuzione comando: /bin/bash /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:44:03 ERRORE: Timeout durante l'esecuzione dello script.
+17:44:04 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:44:04 Microfono selezionato (index 1)
+17:44:04 Ascolto avviato... (VAD Mode: 3)
+VIVO!: 17:44:04
+17:44:04 Voce rilevata! Inizio registrazione...
+VIVO!: 17:44:14
+VIVO!: 17:44:24
+17:44:25 Fine registrazione: silenzio 10.0s.
+17:44:25 File audio salvato: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav (Durata: 20.7s).
+17:44:25 Durata ok (20.7s). Invio file...
+17:44:25 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:44:25 Esecuzione comando: /bin/bash /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:45:25 ERRORE: Timeout durante l'esecuzione dello script.
+17:45:26 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:45:26 Microfono selezionato (index 1)
+17:45:26 Ascolto avviato... (VAD Mode: 3)
+VIVO!: 17:45:26
+VIVO!: 17:45:36
+VIVO!: 17:45:46
+17:45:56 Voce rilevata! Inizio registrazione...
+VIVO!: 17:45:56
+VIVO!: 17:46:06
+VIVO!: 17:46:16
+17:46:26 Fine registrazione: max 30s raggiunti.
+17:46:26 File audio salvato: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav (Durata: 30.0s).
+17:46:26 Durata ok (30.0s). Invio file...
+17:46:26 Avvio Spostamento (Locale) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:46:26 Esecuzione comando: /bin/bash /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/sposta_file.sh /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:49:21 AVVIO SCRIPT 2025-06-26 17:49:21
+17:49:21 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:49:21 Microfono selezionato (index 1)
+17:49:21 Ascolto avviato... (VAD Mode: 3)
+17:52:27 AVVIO SCRIPT 2025-06-26 17:52:27
+17:52:27 Sistema rilevato: Mac. I file verranno spostati localmente in '/Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/registrazioni_spostate'
+17:52:27 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:52:27 Microfono selezionato (index 1)
+17:52:27 Ascolto avviato... (VAD Mode: 3)
+17:52:28 Voce rilevata! Inizio registrazione...
+VIVO!: 17:52:37
+17:52:38 Fine registrazione: silenzio 10.0s.
+17:52:38 File audio salvato: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav (Durata: 10.2s).
+17:52:38 Durata ok (10.2s). Invio/Spostamento file...
+17:52:38 Avvio Spostamento (Mac) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:52:38 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/registrazioni_spostate/recorded_audio.wav
+17:52:39 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:52:39 Microfono selezionato (index 1)
+17:52:39 Ascolto avviato... (VAD Mode: 3)
+17:55:00 AVVIO SCRIPT 2025-06-26 17:55:00
+17:55:00 Sistema rilevato: Mac. I file verranno spostati localmente in:
+17:55:00 '/Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES'
+17:55:00 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:55:00 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+17:55:00 Ascolto avviato... (VAD Mode: 3)
+17:55:01 Voce rilevata! Inizio registrazione...
+VIVO!: 17:55:10
+17:55:11 Fine registrazione: silenzio 10.0s.
+17:55:12 File audio salvato: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav (Durata: 10.5s).
+17:55:12 Durata ok (10.5s). Avvio invio/spostamento...
+17:55:12 Avvio Spostamento (Mac) per il file: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/0-LOCAL/LISTEN/recorded_audio.wav
+17:55:12 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/recorded_audio.wav
+17:55:13 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:55:13 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+17:55:13 Ascolto avviato... (VAD Mode: 3)
+17:55:16 Voce rilevata! Inizio registrazione...
+VIVO!: 17:55:20
+VIVO!: 17:55:30
+17:57:52 AVVIO SCRIPT 2025-06-26 17:57:52
+17:57:52 Sistema rilevato: Mac (Prefisso: 1). I file verranno spostati in:
+17:57:52 '/Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES'
+17:57:52 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:57:52 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+17:57:52 Ascolto avviato... (VAD Mode: 3)
+17:57:53 Voce rilevata! Inizio registrazione...
+VIVO!: 17:58:02
+VIVO!: 17:58:12
+VIVO!: 17:58:22
+17:58:23 Fine registrazione: max 30s raggiunti.
+17:58:23 File audio salvato: 1-20250626_175823.wav (Durata: 30.0s).
+17:58:23 Durata ok (30.0s). Avvio invio/spostamento...
+17:58:23 Avvio Spostamento (Mac) per il file: 1-20250626_175823.wav
+17:58:23 File spostato con successo in: /Users/lucabertini/Library/Mobile Documents/com~apple~CloudDocs/006 - A R T Essentials/01 - PROGETTI/09 - BARBARD/RT/FROM_TABLES/1-20250626_175823.wav
+17:58:24 Inizio ciclo di ascolto (Energy: 400, Silence: 10.0s, MaxRec: 30s, MinDur: 10.0s)
+17:58:24 Microfono selezionato: 'MacBook Pro Microphone' (index 1)
+17:58:24 Ascolto avviato... (VAD Mode: 3)
+17:58:24 Voce rilevata! Inizio registrazione...
