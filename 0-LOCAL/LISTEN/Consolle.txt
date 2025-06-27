@@ -1453,3 +1453,6 @@ VIVO!: 20:50:57
 20:51:01 Configurazione audio dinamica: RATE=16000Hz, CHUNK=320 (per 20ms di frame)
 20:51:01 Ascolto avviato... (VAD Mode: 3)
 20:51:01 Voce rilevata! Inizio registrazione...
+VIVO!: 20:51:07
+VIVO!: 20:51:17
+VIVO!: 20:51:27
