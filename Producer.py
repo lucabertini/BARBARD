@@ -6,14 +6,15 @@ Producer.py: Orchestratore per la generazione di canzoni.
 Monitora le trascrizioni pronte, le assegna a dei worker concorrenti
 in modo equo e gestisce il ciclo di vita della produzione musicale.
 (Versione con percorsi dinamici e portabili, logging stile-immagine,
-spinner, CODA LIMITATA e DEBUG)
+spinner, CODA LIMITATA, DEBUG e BATCH ATOMICI per massimizzare il throughput)
 """
 
 # --- INIZIO BLOCCO UNIVERSALE DI GESTIONE PERCORSI ---
 import os
 import sys
+import uuid # <-- 1. MODIFICA: Import per ID unici dei job
 from pathlib import Path
-from dotenv import load_dotenv # <-- 1. PRIMA MODIFICA
+from dotenv import load_dotenv
 
 # Trova il percorso assoluto della directory in cui si trova questo script.
 # Questo rende il progetto portabile e indipendente dalla directory di lavoro corrente.
@@ -25,7 +26,7 @@ except NameError:
 
 # Imposta la directory di lavoro sulla radice del progetto per coerenza.
 os.chdir(PROJECT_ROOT)
-load_dotenv() # <-- 2. SECONDA MODIFICA
+load_dotenv()
 # --- FINE BLOCCO UNIVERSALE ---
 
 import time
@@ -46,6 +47,7 @@ WORK_DIR = PROJECT_ROOT / "WORK_IN_PROGRESS"
 TRANSCRIPT_ARCHIVE_DIR = PROJECT_ROOT / "FROM_TABLES" / "Archive" / "Trascrizioni"
 FAILED_TRANSCRIPTS_DIR = WORK_DIR / "failed_processing"
 TMP_DIR = PROJECT_ROOT / ".tmp_player"
+JOBS_TMP_DIR = TMP_DIR / "jobs" # <-- 2. MODIFICA: Directory per i batch temporanei
 
 PLAYLIST_FILE = TMP_DIR / "playlist.queue"
 PLAYLIST_LOCK_FILE = TMP_DIR / "playlist.queue.lock"
@@ -57,9 +59,6 @@ SONG_GENERATOR_SCRIPT = PROJECT_ROOT / "GenerateSong.py"
 
 MAX_WORKERS= int(os.getenv("MAX_WORKERS", "2"))
 MAX_QUEUE_SIZE= int(os.getenv("MAX_QUEUE_SIZE", "2"))
-
-
-
 
 # --- FUNZIONI DI UTILITÀ ---
 def get_timestamp():
@@ -77,36 +76,35 @@ def get_queue_size() -> int:
             if not PLAYLIST_FILE.exists():
                 return 0
             lines = PLAYLIST_FILE.read_text(encoding="utf-8").splitlines()
-            # Conta solo le righe non vuote
             return len([line for line in lines if line.strip()])
     except Timeout:
-        # Se non riesce a ottenere il lock, assume che la coda sia piena per sicurezza
         return MAX_QUEUE_SIZE
     except FileNotFoundError:
         return 0
 
 # --- LOGICA DEL WORKER ---
-def create_song_worker(table_number: int, creations_count: int) -> tuple[int, bool]:
+# <-- 3. MODIFICA: La firma della funzione ora accetta job_dir invece di calcolarlo -->
+def create_song_worker(job_dir: Path, table_number: int, creations_count: int) -> tuple[int, bool]:
     """
     Funzione eseguita da ogni processo worker.
-    Lancia GenerateSong.py come sottoprocesso e gestisce l'output.
+    Lavora su una directory di job temporanea e isolata.
     """
     clear_status_line()
-    print(f"{Fore.CYAN}{get_timestamp()} [ {table_number} ] Equità: Creazioni Precedenti: {creations_count}. COMPONGO!{Style.RESET_ALL}")
-    table_work_dir = WORK_DIR / str(table_number)
-    transcript_files = sorted(list(table_work_dir.glob("*.txt")))
+    print(f"{Fore.CYAN}{get_timestamp()} [ {table_number} ] Equità: {creations_count}. COMPONGO (Job: {job_dir.name})!{Style.RESET_ALL}")
+    
+    # Il worker ora opera sulla directory di job che gli è stata passata
+    transcript_files = sorted(list(job_dir.glob("*.txt")))
 
     try:
         if not transcript_files:
             clear_status_line()
-            print(f"{Fore.RED}{get_timestamp()} [ {table_number} ] ERRORE: Nessun file di trascrizione trovato.{Style.RESET_ALL}")
+            print(f"{Fore.RED}{get_timestamp()} [ {table_number} ] ERRORE: Nessun file di trascrizione trovato nel job dir {job_dir}.{Style.RESET_ALL}")
             return table_number, False
 
         concatenated_text = "\n---\n".join([p.read_text(encoding="utf-8") for p in transcript_files])
         clear_status_line()
         print(f"{Fore.MAGENTA}{get_timestamp()} [ {table_number} ] Avviato. Trovati [{len(transcript_files)}] file. Genero riassunto & lyrics...{Style.RESET_ALL}")
 
-        # Lancia GenerateSong.py usando il percorso assoluto e passando il testo via stdin
         command = [sys.executable, "-u", str(SONG_GENERATOR_SCRIPT), str(table_number)]
         process = subprocess.Popen(
             command,
@@ -115,26 +113,23 @@ def create_song_worker(table_number: int, creations_count: int) -> tuple[int, bo
             stderr=subprocess.PIPE,
             text=True,
             encoding="utf-8",
-            cwd=PROJECT_ROOT  # Imposta esplicitamente la CWD per il sottoprocesso
+            cwd=PROJECT_ROOT
         )
         process.stdin.write(concatenated_text)
         process.stdin.close()
         
         song_data_json = ""
-        # Legge l'output dal sottoprocesso in tempo reale
         for line in iter(process.stdout.readline, ''):
             line = line.strip()
             if not line: continue
-            
             clear_status_line()
-            
             if line.startswith("MILESTONE:"):
                 message = line.replace("MILESTONE: ", "").strip()
                 color = Fore.YELLOW + Style.BRIGHT if "INVIO ALL'API" in message else Style.DIM
                 print(f"{color}{get_timestamp()} [ {table_number} ] {message}{Style.RESET_ALL}")
-            elif line.startswith("{"): # Cattura la riga JSON finale
+            elif line.startswith("{"):
                 song_data_json = line
-            else: # Stampa altre informazioni (es. modello e stile)
+            else:
                 print(f"{Style.DIM}{line}{Style.RESET_ALL}")
         
         stderr_output = process.stderr.read()
@@ -144,10 +139,9 @@ def create_song_worker(table_number: int, creations_count: int) -> tuple[int, bo
             clear_status_line()
             print(f"{Fore.RED}{Style.BRIGHT}{get_timestamp()} [ {table_number} ] ERRORE! '{SONG_GENERATOR_SCRIPT.name}' ha fallito (codice {return_code}).{Style.RESET_ALL}")
             print(f"{Fore.RED}{stderr_output.strip()}", file=sys.stderr)
-            error_dir = FAILED_TRANSCRIPTS_DIR / str(table_number)
-            error_dir.mkdir(parents=True, exist_ok=True)
-            for txt_file in transcript_files:
-                shutil.move(str(txt_file), str(error_dir / txt_file.name))
+            # Sposta l'intera cartella del job fallito per l'analisi
+            error_dir = FAILED_TRANSCRIPTS_DIR / f"failed_job_{job_dir.name}"
+            shutil.move(str(job_dir), str(error_dir))
             return table_number, False
 
         if not song_data_json:
@@ -155,30 +149,29 @@ def create_song_worker(table_number: int, creations_count: int) -> tuple[int, bo
             print(f"{Fore.RED}{Style.BRIGHT}{get_timestamp()} [ {table_number} ] ERRORE! Script terminato senza output JSON.{Style.RESET_ALL}")
             return table_number, False
         
-        # Aggiunge la canzone alla playlist in modo sicuro
         with FileLock(PLAYLIST_LOCK_FILE):
             with open(PLAYLIST_FILE, "a", encoding="utf-8") as f:
                 f.write(song_data_json + "\n")
         
-        # Archivia le trascrizioni usate
         archive_sub_dir = TRANSCRIPT_ARCHIVE_DIR / str(table_number)
         archive_sub_dir.mkdir(parents=True, exist_ok=True)
-        for txt_file in transcript_files:
+        for txt_file in transcript_files: # I file sono ancora in job_dir
             shutil.move(str(txt_file), str(archive_sub_dir / txt_file.name))
         
         clear_status_line()
         print(f"{Fore.GREEN}{Style.BRIGHT}{get_timestamp()} [ {table_number} ] PRODUZIONE COMPLETATA! Canzone inviata alla playlist.{Style.RESET_ALL}")
+        
+        # <-- 4. MODIFICA: Pulisce la cartella del job temporaneo dopo il successo -->
+        shutil.rmtree(job_dir)
         return table_number, True
     
     except Exception as e:
         clear_status_line()
         print(f"{Fore.RED}{Style.BRIGHT}{get_timestamp()} [ {table_number} ] ERRORE CRITICO nel worker: {e}{Style.RESET_ALL}", file=sys.stderr)
-        # Tenta di spostare i file in quarantena anche in caso di errore generico
-        error_dir = FAILED_TRANSCRIPTS_DIR / str(table_number)
-        error_dir.mkdir(parents=True, exist_ok=True)
-        for txt_file in transcript_files:
-            if txt_file.exists():
-                shutil.move(str(txt_file), str(error_dir / txt_file.name))
+        # Sposta l'intera cartella del job fallito per analisi anche in caso di eccezione
+        if job_dir.exists():
+            error_dir = FAILED_TRANSCRIPTS_DIR / f"crashed_job_{job_dir.name}"
+            shutil.move(str(job_dir), str(error_dir))
         return table_number, False
 
 # --- GESTORE PRINCIPALE (MANAGER) ---
@@ -186,7 +179,7 @@ def create_song_worker(table_number: int, creations_count: int) -> tuple[int, bo
 class ProducerManager:
     def __init__(self, max_workers: int):
         self.max_workers = max_workers
-        self.active_jobs = {}  # Dizionario {job_obj: table_number}
+        self.active_jobs = {}
         self.creation_counts = self._load_state()
         self.spinner_chars = ['-', '\\', '|', '/']
         self.spinner_index = 0
@@ -195,14 +188,12 @@ class ProducerManager:
         print(f"{Fore.CYAN}{get_timestamp()} [PRODUCER] Manager avviato. Workers: {max_workers}, Coda max: {MAX_QUEUE_SIZE}.{Style.RESET_ALL}")
 
     def _load_state(self) -> dict:
-        """Carica il contatore di creazioni per ogni tavolo."""
-        default_counts = {str(i): 0 for i in range(1, 6)} # Assumiamo tavoli da 1 a 5
+        default_counts = {str(i): 0 for i in range(1, 6)}
         if not PRODUCER_STATE_FILE.exists():
             return default_counts
         try:
             with PRODUCER_STATE_FILE.open('r') as f:
                 counts = json.load(f)
-                # Assicura che tutti i tavoli base siano presenti
                 for i in range(1, 6):
                     if str(i) not in counts:
                         counts[str(i)] = 0
@@ -213,13 +204,13 @@ class ProducerManager:
             return default_counts
 
     def _save_state(self):
-        """Salva lo stato aggiornato dei contatori."""
         with PRODUCER_STATE_FILE.open('w') as f:
             json.dump(self.creation_counts, f, indent=2)
 
     def run(self):
         """Ciclo principale del manager."""
-        for d in [TMP_DIR, WORK_DIR, TRANSCRIPT_ARCHIVE_DIR, FAILED_TRANSCRIPTS_DIR]:
+        # <-- 5. MODIFICA: Assicura che anche la directory dei job venga creata -->
+        for d in [TMP_DIR, WORK_DIR, TRANSCRIPT_ARCHIVE_DIR, FAILED_TRANSCRIPTS_DIR, JOBS_TMP_DIR]:
             d.mkdir(parents=True, exist_ok=True)
             
         with Pool(processes=self.max_workers) as pool:
@@ -239,7 +230,6 @@ class ProducerManager:
         print(f"{Fore.CYAN}{get_timestamp()} [PRODUCER] Lavori terminati. Uscita pulita.{Style.RESET_ALL}")
 
     def cleanup_finished_jobs(self):
-        """Controlla i job terminati e aggiorna lo stato."""
         completed_jobs = {job for job in self.active_jobs if job.ready()}
         if not completed_jobs: return
 
@@ -248,37 +238,62 @@ class ProducerManager:
             try:
                 _, success = job.get()
                 if success:
+                    # Assicuriamoci di aggiornare dinamicamente il dizionario se un tavolo non esiste
+                    if str(table) not in self.creation_counts:
+                         self.creation_counts[str(table)] = 0
                     self.creation_counts[str(table)] += 1
                     self._save_state()
             except Exception as e:
                 clear_status_line()
                 print(f"{Fore.RED}{Style.BRIGHT}{get_timestamp()} [PRODUCER] ERRORE CRITICO ottenendo risultato per tavolo #{table}: {e}{Style.RESET_ALL}", file=sys.stderr)
 
+    # <-- 6. MODIFICA: Logica di assegnazione completamente riscritta con Batch Atomici -->
     def assign_new_jobs_fairly(self, pool):
-        """Assegna nuovi lavori in base alla disponibilità e all'equità."""
-        # Non assegnare nuovi lavori se la coda di riproduzione è piena o non ci sono worker liberi
+        """Assegna nuovi lavori usando batch atomici per massimizzare il throughput."""
         if get_queue_size() >= MAX_QUEUE_SIZE or len(self.active_jobs) >= self.max_workers:
             return
 
-        # Continua ad assegnare finché ci sono slot liberi e materiale pronto
         while len(self.active_jobs) < self.max_workers:
-            processing_tables = set(self.active_jobs.values())
-            # Trova directory in WORK_DIR che sono numeriche, non in elaborazione, e non vuote
-            ready_dirs = [d for d in WORK_DIR.iterdir() if d.is_dir() and d.name.isdigit() and any(d.iterdir())]
-            candidate_tables = [d.name for d in ready_dirs if int(d.name) not in processing_tables]
+            # Scansiona le directory con file .txt pronti
+            ready_dirs = [d for d in WORK_DIR.iterdir() if d.is_dir() and d.name.isdigit() and any(d.glob('*.txt'))]
+            candidate_tables = [d.name for d in ready_dirs]
             
             if not candidate_tables:
                 break # Nessun lavoro da assegnare
 
-            # Logica di equità: scegli il tavolo con meno creazioni
-            table_to_process = min(candidate_tables, key=lambda t: self.creation_counts.get(t, 0))
-            creations = self.creation_counts.get(table_to_process, 0)
+            # Logica di equità: scegli il tavolo con meno creazioni tra quelli con lavoro pronto
+            table_to_process_str = min(candidate_tables, key=lambda t: self.creation_counts.get(t, 0))
+            table_to_process = int(table_to_process_str)
+            creations = self.creation_counts.get(table_to_process_str, 0)
+
+            # --- INIZIO LOGICA DEL BATCH ATOMICO ---
+            source_dir = WORK_DIR / table_to_process_str
+            # Rilegge i file per sicurezza, per evitare race conditions
+            files_to_process = list(source_dir.glob('*.txt'))
             
-            job_obj = pool.apply_async(create_song_worker, args=(int(table_to_process), creations))
-            self.active_jobs[job_obj] = int(table_to_process)
+            if not files_to_process:
+                continue # I file sono spariti tra la scansione e ora, riprova il ciclo
+
+            # 1. Crea una directory di job unica
+            job_id = f"{table_to_process_str}_{datetime.now().strftime('%H%M%S')}_{uuid.uuid4().hex[:6]}"
+            job_dir = JOBS_TMP_DIR / job_id
+            job_dir.mkdir()
+
+            # 2. Sposta i file in modo atomico nel batch
+            for txt_file in files_to_process:
+                try:
+                    shutil.move(str(txt_file), str(job_dir / txt_file.name))
+                except FileNotFoundError:
+                    # Il file è stato preso da un altro processo? Ignora e vai avanti.
+                    pass
+            # --- FINE LOGICA DEL BATCH ATOMICO ---
+
+            # 3. Lancia il worker passandogli il percorso del job
+            job_obj = pool.apply_async(create_song_worker, args=(job_dir, table_to_process, creations))
+            self.active_jobs[job_obj] = table_to_process
+
 
     def print_status_with_spinner(self):
-        """Stampa una riga di stato dinamica."""
         active_list = sorted(list(self.active_jobs.values())) if self.active_jobs else 'Nessuno'
         current_queue_size = get_queue_size()
         
@@ -296,16 +311,12 @@ class ProducerManager:
 
 # --- PUNTO DI INGRESSO DELLO SCRIPT ---
 if __name__ == "__main__":
-    # --- INIZIO CAMBIAMENTO ---
-    # Stampa i parametri di configurazione letti dal file .env (o i valori di default)
     print(f"{Fore.BLUE}{Style.BRIGHT}--- Parametri di Configurazione Caricati ---{Style.RESET_ALL}")
     print(f"{Fore.BLUE}  - MAX_WORKERS    : {MAX_WORKERS}{Style.RESET_ALL}")
     print(f"{Fore.BLUE}  - MAX_QUEUE_SIZE : {MAX_QUEUE_SIZE}{Style.RESET_ALL}")
     print(f"{Fore.BLUE}{Style.BRIGHT}-------------------------------------------{Style.RESET_ALL}\n")
-    # --- FINE CAMBIAMENTO ---
 
     try:
-        # Usa un file lock per garantire che solo un'istanza del producer sia in esecuzione
         with FileLock(PRODUCER_LOCK_FILE, timeout=0):
             manager = ProducerManager(max_workers=MAX_WORKERS)
             manager.run()
