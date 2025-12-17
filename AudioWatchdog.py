@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# ____    _    ____   ____    _    ____  ____  
+#| __ )  / \  |  _ \ | __ )  / \  |  _ \|  _ \ 
+#|  _ \ / _ \ | |_) ||  _ \ / _ \ | |_) | | | |
+#| |_) / ___ \|  _ < | |_) / ___ \|  _ <| |_| |
+#|____/_/   \_\_| \_\|____/_/   \_\_| \_\____/ 
+
 """
 AudioWatchdog.py: Sorveglia una cartella per nuovi file audio,
 li trascrive tramite l'API di OpenAI e li organizza per la produzione.

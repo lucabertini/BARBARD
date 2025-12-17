@@ -1,11 +1,21 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
+# ____    _    ____   ____    _    ____  ____  
+#| __ )  / \  |  _ \ | __ )  / \  |  _ \|  _ \ 
+#|  _ \ / _ \ | |_) ||  _ \ / _ \ | |_) | | | |
+#| |_) / ___ \|  _ < | |_) / ___ \|  _ <| |_| |
+#|____/_/   \_\_| \_\|____/_/   \_\_| \_\____/ 
+
+
+
 """
 GenerateSong.py: Riceve testo via stdin, genera un riassunto e dei testi
 con OpenAI, e poi una canzone con l'API KieAI.
 (Versione con percorsi dinamici e portabili)
 """
+
 
 # --- INIZIO BLOCCO UNIVERSALE DI GESTIONE PERCORSI ---
 import os

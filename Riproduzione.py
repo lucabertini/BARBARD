@@ -1,6 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+# ____    _    ____   ____    _    ____  ____  
+#| __ )  / \  |  _ \ | __ )  / \  |  _ \|  _ \ 
+#|  _ \ / _ \ | |_) ||  _ \ / _ \ | |_) | | | |
+#| |_) / ___ \|  _ < | |_) / ___ \|  _ <| |_| |
+#|____/_/   \_\_| \_\|____/_/   \_\_| \_\____/ 
+
+
+
 """
 Riproduzione.py: Riproduce le canzoni generate in ordine FIFO,
 con un'interfaccia a dashboard e crossfade.

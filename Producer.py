@@ -1,6 +1,15 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+
+# ____    _    ____   ____    _    ____  ____  
+#| __ )  / \  |  _ \ | __ )  / \  |  _ \|  _ \ 
+#|  _ \ / _ \ | |_) ||  _ \ / _ \ | |_) | | | |
+#| |_) / ___ \|  _ < | |_) / ___ \|  _ <| |_| |
+#|____/_/   \_\_| \_\|____/_/   \_\_| \_\____/ 
+
+
+
 """
 Producer.py: Orchestratore per la generazione di canzoni.
 Monitora le trascrizioni pronte, le assegna a dei worker concorrenti
